@@ -11,6 +11,12 @@
 		0C46071527FB9BBF001E5998 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46071427FB9BBF001E5998 /* ContentView.swift */; };
 		0C46071727FB9BBF001E5998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C46071627FB9BBF001E5998 /* Assets.xcassets */; };
 		0C46071A27FB9BBF001E5998 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C46071927FB9BBF001E5998 /* Preview Assets.xcassets */; };
+		0C46072127FB9BF3001E5998 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072027FB9BF3001E5998 /* User.swift */; };
+		0C46072327FB9C02001E5998 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072227FB9C02001E5998 /* Friend.swift */; };
+		0C46072527FBAC41001E5998 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072427FBAC41001E5998 /* DetailView.swift */; };
+		0C46072727FBADE9001E5998 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072627FBADE9001E5998 /* UserView.swift */; };
+		0C46072927FBAF45001E5998 /* IsActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072827FBAF45001E5998 /* IsActiveView.swift */; };
+		0C46072B27FBE84F001E5998 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46072A27FBE84F001E5998 /* FriendsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		0C46071427FB9BBF001E5998 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C46071627FB9BBF001E5998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C46071927FB9BBF001E5998 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0C46072027FB9BF3001E5998 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0C46072227FB9C02001E5998 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		0C46072427FBAC41001E5998 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0C46072627FBADE9001E5998 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		0C46072827FBAF45001E5998 /* IsActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsActiveView.swift; sourceTree = "<group>"; };
+		0C46072A27FBE84F001E5998 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +65,12 @@
 			children = (
 				0C46071227FB9BBF001E5998 /* MICHAELMCGINNIS_FriendsApp.swift */,
 				0C46071427FB9BBF001E5998 /* ContentView.swift */,
+				0C46072427FBAC41001E5998 /* DetailView.swift */,
+				0C46072A27FBE84F001E5998 /* FriendsView.swift */,
+				0C46072827FBAF45001E5998 /* IsActiveView.swift */,
+				0C46072627FBADE9001E5998 /* UserView.swift */,
+				0C46072027FB9BF3001E5998 /* User.swift */,
+				0C46072227FB9C02001E5998 /* Friend.swift */,
 				0C46071627FB9BBF001E5998 /* Assets.xcassets */,
 				0C46071827FB9BBF001E5998 /* Preview Content */,
 			);
@@ -138,7 +156,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C46071527FB9BBF001E5998 /* ContentView.swift in Sources */,
+				0C46072927FBAF45001E5998 /* IsActiveView.swift in Sources */,
+				0C46072B27FBE84F001E5998 /* FriendsView.swift in Sources */,
+				0C46072727FBADE9001E5998 /* UserView.swift in Sources */,
 				0C46071327FB9BBF001E5998 /* MICHAELMCGINNIS_FriendsApp.swift in Sources */,
+				0C46072127FB9BF3001E5998 /* User.swift in Sources */,
+				0C46072527FBAC41001E5998 /* DetailView.swift in Sources */,
+				0C46072327FB9C02001E5998 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,9 +290,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MICHAELMCGINNIS-Friends/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P4HW4VZQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -283,6 +309,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "usv.edu.mmcginnis.MICHAELMCGINNIS-Friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,9 +321,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MICHAELMCGINNIS-Friends/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P4HW4VZQ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -311,6 +340,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "usv.edu.mmcginnis.MICHAELMCGINNIS-Friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
