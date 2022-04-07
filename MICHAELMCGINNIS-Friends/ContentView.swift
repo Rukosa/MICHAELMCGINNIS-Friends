@@ -13,15 +13,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: []) var cusers: FetchedResults<CachedUser>
-    /*
-    func darrellTest() {
-        let fetchRequest: NSFetchRequest<CachedUser> = NSFetchRequest(entityName: "CachedUser")
-        do {
-            let darrellUsers = try moc.fetch(fetchRequest)
-        } catch {
-            print("core data error \(error.localizedDescription)")
-        }
-    }*/
+    
     func grabData() async{
         guard let encoded = try? JSONEncoder().encode(users) else{
             print("Failed to encode users")
@@ -40,17 +32,18 @@ struct ContentView: View {
             //users.users = decodedUsers
             DispatchQueue.main.async {
                 users.users = decodedUsers
-                saveData()
+                //saveData()
             }
         } catch{
             print("Decode failed")
         }
     }
     
+    
     func saveData(){
-        for usee in users.users.indices{
+        for userShort in users.users{
             let user = CachedUser(context: moc)
-            let userShort = users.users[usee]
+            //let userShort = usee//users.users[usee]
             user.id = userShort.id
             user.name = userShort.name
             user.isActive = userShort.isActive
@@ -62,17 +55,12 @@ struct ContentView: View {
             user.age = Int16(userShort.age)
             user.tags = userShort.tags.joined(separator: ",")
             
-            var friendSet: Set<CachedFriend> = []
-            for friend in userShort.friends.indices{
+            for friend in userShort.friends{
                 let fren = CachedFriend(context: moc)
-                fren.id = userShort.friends[friend].id
-                fren.name = userShort.friends[friend].name
-                fren.userFriend = user
-                friendSet.insert(fren)
-                user.friends?.insert(fren)
+                fren.id = friend.id
+                fren.name = friend.name
+                fren.userFriend?.insert(user)
             }
-            //user.friends = friendSet
-            //user.addToCachedFriend(friendSet)
             
             try? moc.save()
             //print("data saved")
@@ -93,15 +81,16 @@ struct ContentView: View {
                     }
                 }
             }.navigationTitle("Friends")
-        }.onAppear{
+        }.task{
             if users.users.isEmpty{
                 for coreDataUser in cusers {
                     let user = User(cachedUser: coreDataUser)
                     users.users.append(user)
                 }
-                Task{ @MainActor in
-                    await grabData()
-                }
+                await grabData()
+            }
+            await MainActor.run{
+                saveData()
             }
         }
     }

@@ -26,8 +26,8 @@ extension CachedUser {
     @NSManaged public var about: String?
     @NSManaged public var registered: Date?
     @NSManaged public var tags: String?
-    //@NSManaged public var friends: NSSet?
-    @NSManaged public var friends: Set<CachedFriend>?
+    @NSManaged public var friends: NSSet?
+    //@NSManaged public var friends: Set<CachedFriend>?
 }
 
 extension CachedUser {
@@ -39,7 +39,7 @@ extension CachedUser {
     @NSManaged public func removeFromCachedFriend(_ value: CachedFriend)
 
     @objc(addCachedFriend:)
-    @NSManaged public func addToCachedFriend(_ values: Set<CachedFriend>)
+    @NSManaged public func addToCachedFriend(_ values: NSSet)
     //@NSManaged public func addToCachedFriend(_ values: NSSet)
 
     @objc(removeCachedFriend:)

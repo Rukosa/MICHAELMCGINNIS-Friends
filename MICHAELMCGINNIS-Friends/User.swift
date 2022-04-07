@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum CodingKeys: CodingKey{
     case id, isActive, name, age, company, email, address, about, registered, tags, friends
@@ -78,7 +79,7 @@ struct User: Codable, Identifiable{
         var newFriend: [Friend] = []
         
         cachedFriends?.forEach{ cachedFriend in
-            newFriend.append(Friend(cachedFriend: cachedFriend))
+            newFriend.append(Friend(cachedFriend: cachedFriend as! CachedFriend))
             //friends.append(Friend(cachedFriend: (cachedFriends?.popFirst())!))
         }
         friends = newFriend
