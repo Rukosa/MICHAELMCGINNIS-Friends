@@ -38,6 +38,11 @@ struct DetailView: View {
                     .padding(.trailing)
                     .font(.body)
                 Spacer()
+                VStack{
+                    ForEach(user.tags.indices){ tag in
+                        Text(user.tags[tag])
+                    }
+                }
             }
             .navigationBarHidden(true)
             Spacer()
