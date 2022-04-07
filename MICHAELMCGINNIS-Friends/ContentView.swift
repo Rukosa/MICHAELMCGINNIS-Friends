@@ -67,13 +67,12 @@ struct ContentView: View {
                 let fren = CachedFriend(context: moc)
                 fren.id = userShort.friends[friend].id
                 fren.name = userShort.friends[friend].name
+                fren.userFriend = user
                 friendSet.insert(fren)
-                //user.addToCachedFriend(fren)
-                //print("Saved \(fren.name)")
+                user.friends?.insert(fren)
             }
-            user.friends = friendSet
+            //user.friends = friendSet
             //user.addToCachedFriend(friendSet)
-            //print(user.friends?.first!)
             
             try? moc.save()
             //print("data saved")
@@ -95,7 +94,7 @@ struct ContentView: View {
                 }
             }.navigationTitle("Friends")
         }.onAppear{
-            //if users.users.isEmpty{
+            if users.users.isEmpty{
                 for coreDataUser in cusers {
                     let user = User(cachedUser: coreDataUser)
                     users.users.append(user)
@@ -103,7 +102,7 @@ struct ContentView: View {
                 Task{ @MainActor in
                     await grabData()
                 }
-            //}
+            }
         }
     }
 }

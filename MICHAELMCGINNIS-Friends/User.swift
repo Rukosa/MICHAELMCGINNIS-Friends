@@ -73,13 +73,14 @@ struct User: Codable, Identifiable{
         registered = cachedUser.registered!
         tags = cachedUser.tags?.components(separatedBy: ",") ?? []
         //let cachedFriends = cachedUser.friends?.allObjects as! [CachedFriend]
-        let cachedFriends = cachedUser.friends
         
+        let cachedFriends = cachedUser.friends
         var newFriend: [Friend] = []
+        
         cachedFriends?.forEach{ cachedFriend in
             newFriend.append(Friend(cachedFriend: cachedFriend))
+            //friends.append(Friend(cachedFriend: (cachedFriends?.popFirst())!))
         }
-        //print(newFriend.first)
         friends = newFriend
         //friends = []
         //let cachedFriend = cachedUser.friends?.sorted() ?? []
