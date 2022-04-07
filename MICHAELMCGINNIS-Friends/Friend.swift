@@ -10,4 +10,8 @@ import Foundation
 struct Friend: Codable, Identifiable{
     let id: String
     let name: String
+    init(cachedFriend: CachedFriend){
+        id = cachedFriend.id ?? "failed id"
+        name = cachedFriend.name ?? "No name"
+    }
 }

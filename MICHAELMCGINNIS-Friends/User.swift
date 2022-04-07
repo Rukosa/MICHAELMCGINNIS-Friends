@@ -26,7 +26,7 @@ struct User: Codable, Identifiable{
     let about: String
     let registered: Date
     let tags: [String]
-    let friends: [Friend]
+    var friends: [Friend]
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -59,6 +59,33 @@ struct User: Codable, Identifiable{
         tags = try container.decode([String].self, forKey: .tags)
         friends = try container.decode([Friend].self, forKey: .friends)
         
+    }
+    
+    init(cachedUser: CachedUser){
+        id = cachedUser.id ?? "failed id"
+        isActive = cachedUser.isActive
+        name = cachedUser.name ?? "No name"
+        age = Int(cachedUser.age)
+        company = cachedUser.company ?? "No company"
+        email = cachedUser.email ?? "No email"
+        address = cachedUser.address ?? "No address"
+        about = cachedUser.about ?? "No about"
+        registered = cachedUser.registered!
+        tags = cachedUser.tags?.components(separatedBy: ",") ?? []
+        //let cachedFriends = cachedUser.friends?.allObjects as! [CachedFriend]
+        let cachedFriends = cachedUser.friends
+        
+        var newFriend: [Friend] = []
+        cachedFriends?.forEach{ cachedFriend in
+            newFriend.append(Friend(cachedFriend: cachedFriend))
+        }
+        //print(newFriend.first)
+        friends = newFriend
+        //friends = []
+        //let cachedFriend = cachedUser.friends?.sorted() ?? []
+        //for friend in cachedFriends {
+            
+        //}
     }
 }
 
