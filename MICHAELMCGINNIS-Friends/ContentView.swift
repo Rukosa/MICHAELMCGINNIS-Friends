@@ -15,24 +15,15 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: []) var cusers: FetchedResults<CachedUser>
     
     func grabData() async{
-        guard let encoded = try? JSONEncoder().encode(users) else{
-            print("Failed to encode users")
-            return
-        }
-        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
-        var request = URLRequest(url: url)
-        request.setValue("applications/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = encoded
         do{
+            let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
             let decodedUsers = try decoder.decode([User].self, from: data)
-            //users.users = decodedUsers
             DispatchQueue.main.async {
                 users.users = decodedUsers
-                //saveData()
+                saveData()
             }
         } catch{
             print("Decode failed")
@@ -89,9 +80,10 @@ struct ContentView: View {
                 }
                 await grabData()
             }
+            /*
             await MainActor.run{
                 saveData()
-            }
+            }*/
         }
     }
 }

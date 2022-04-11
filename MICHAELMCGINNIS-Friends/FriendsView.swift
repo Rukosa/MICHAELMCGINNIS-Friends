@@ -19,7 +19,7 @@ struct FriendsView: View {
                     }
                 }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 
